@@ -83,7 +83,6 @@ function concertThis() {
                 console.log("* " + timeConfigured + "\n");
             }
 
-        console.log("App powered by Bands in Town & AXIOS");
         console.log("\n*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+\n")
     });
 }
@@ -91,7 +90,6 @@ function concertThis() {
 //spotifyThis()
 function spotifyThis() {
     console.log("\n*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+\n");
-    capitalize(userInput);
 
     if (!userInput) {
         userInput = "the sign ace of base"
@@ -105,16 +103,29 @@ function spotifyThis() {
         if (err) {
           return console.log('Error occurred: ' + err);
         }
+        //console.log(data.tracks.items[0].album.artists[0].name);
 
+        //Pull desired data from the API call and place it in an array
         var spotifyArray = data.tracks.items; 
 
-        for (var k = 0; )
-    
-
-    }
-    )}
+        //sort through that array and pull out the requested data
+         for (var k = 0; k < spotifyArray.length; k++) {
+             console.log("*Here's the Spotify 411!\n");
+             console.log("*Artist: " + spotifyArray[k].album.artists[k].name);
+             console.log("*Song Title: " + spotifyArray[k].name);
+             console.log("*Album: " + spotifyArray[k].album.name);
+             console.log("*Spotify Link: " + spotifyArray[k].external_urls.spotify);
+         };
+    });
+}
 
 function movieThis() {
+    console.log("\n*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+\n");
+
+    if(!userInput) {
+        userInput = "mr nobody";
+    };
+    console.log(userInput);
 
 }
 
