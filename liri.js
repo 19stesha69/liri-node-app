@@ -10,6 +10,9 @@ var moment = require('moment');
 //Require NODE-SPOTIFY-API
 var Spotify = require('node-spotify-api');
 
+//Require FS
+var fs = require("fs");
+
 //this code is required to import the keys.js file and store it in a variable
 var keys = require("./keys.js");
 
@@ -64,8 +67,10 @@ function concertThis() {
     console.log("\n*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+\n");
     console.log("LET'S ROCK AND ROLL!!!\n");
 
+    var bandURL = "https://rest.bandsintown.com/artists/" + userInput + "/events?app_id=" + bandsInTown + "&date=2019-06-16%2C2019-07-16";
+
     axios
-        .get("https://rest.bandsintown.com/artists/" + userInput + "/events?app_id=" + bandsInTown + "&date=2019-06-16%2C2019-07-16")
+        .get(bandURL)
         .then(function(response) {
 
             capitalize(userInput);
@@ -116,21 +121,64 @@ function spotifyThis() {
              console.log("*Album: " + spotifyArray[k].album.name);
              console.log("*Spotify Link: " + spotifyArray[k].external_urls.spotify);
          };
+         console.log("\n*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+\n")
     });
 }
 
 function movieThis() {
     console.log("\n*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+\n");
+    console.log("OOOH! That's a GOOD ONE!");
 
-    if(!userInput) {
+        if(!userInput) {
         userInput = "mr nobody";
-    };
-    console.log(userInput);
+        };
+
+        var movieURL = "http://www.omdbapi.com/?t=" + userInput + "&apikey=" + omdb;
+        axios
+            .get(movieURL)
+            .then(function(response) {
+                console.log(response);
+                for (var m = 0; m < response.data.length; m++) { 
+                    var results = response.data[m];
+                    var movieTitle = results.title;
+                    var releaseYear = results.released;
+                    var filmCountry = results.country;
+                    var filmLanguage = results.language;
+                    var filmPlot = results.plot;
+                    var filmCast = results.actors;
+
+                    console.log("*Movie: " + movieTitle);
+                    console.log("*Date of Release: " + releaseYear);
+                    console.log("*Country: " + filmCountry);
+                    console.log("*Language: " + filmLanguage);
+                    console.log("*Plot: " + filmPlot);
+                    console.log("*Cast: " + filmCast);
+
+                }
+                console.log("\n*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+\n")
+            });    
+                    
 
 }
 
 function doThis() {
-    
+    fs.readFile("random.txt", "utf8", (err, data) => {
+        if (err) {
+            throw err;
+        } 
+        //console.log(data);
+      
+      
+      var dataArray = data.split(","); 
+
+      userCommand = dataArray[0];
+      userInput = dataArray[1];
+
+
+      userRequest(userCommand, userInput);
+    });
+      
+      
 }
 
 
