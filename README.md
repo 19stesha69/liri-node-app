@@ -8,12 +8,17 @@ The code for this app is organized in four sections: requirements, API key initi
 * The user input variables store the data typed in to the command line by the user, making it easy to apply those inputs to the various functions.
 * The functions contain the logic that produces the results the user needs. There are four functions that respond to the four commands:
   * concertThis() - This function takes in the name of a band or artist and produces that act's concert venues, locations, and dates (within the window of June 18, 2019 to August 18, 2019) in a easy to read format. 
-  !(/images/concertThis.png)
+  ![concertThis screenshot](/images/concertThis.png)
+  If the artist isn't touring within the predescribed window, the console makes a gentle suggestion:
+  ![concertThis not touring screenshot](/images/concertThisNotTouring.png)
   This information is called from Bands in Town's API, via the AXIOS npm package.
   * spotifyThis() - This function takes in the name of a song and returns the artist's name, the title of the song, the album the song is found on, and the link to song on spotify.
-  !(/images/spotify-this-song.png)If no song title is typed in to the command line, the function offers up the info for the song *The Sign* by the iconic swedish pop-band, **Ace of Base**. This information is called from Spotify's API, via the node-spotify-api package.
+  ![spotifyThis screenshot](/images/spotify-this-song.png)
+  If no song title is typed in to the command line, the function offers up the info for the song *The Sign* by the iconic swedish pop-band, **Ace of Base**. 
+  ![spotifyThis Ace of Base screenshot](/images/spotify-this-song-ace-of-base.png)This information is called from Spotify's API, via the node-spotify-api package.
   * movieThis() - This function takes in the title of a film, and returns the film's: title, year of release, IMDB rating, Rotten Tomatoes Rating, the country where the film was produced, the language of the film, the film's plot, and the actors featured in the film. If no film title is typed in to the command line, the function produces the information for the film Mr. Nobody. This information is is called from OMDB's api via the AXIOS npm package.
-  * doThis() - This function has the interesting task of pulling information stored on a .txt file and running it as if that information were typed in to the command line by a user. It does this using readFile object of the node.js File System module.
+  * doThis() - This function has the interesting task of pulling information stored on a .txt file and running it as if that information were typed in to the command line by a user.
+  ![doThis screenshot](/images/doWhatItSaysScreenshot.png)It does this using readFile object of the node.js File System module.
   * userRequest() - This is the function that takes the user's commands, as typed in to the command line, and directs them to the proper function in order for that request to be processed succesfully. It does this via a *switch* statement.
   
 # How to Run the App
