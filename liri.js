@@ -67,7 +67,7 @@ function concertThis() {
     console.log("\n*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+\n");
     console.log("LET'S ROCK AND ROLL!!!\n");
 
-    var bandURL = "https://rest.bandsintown.com/artists/" + userInput + "/events?app_id=" + bandsInTown + "&date=2019-06-16%2C2019-07-16";
+    var bandURL = "https://rest.bandsintown.com/artists/" + userInput + "/events?app_id=" + bandsInTown + "&date=2019-06-18%2C2019-08-18";
 
     axios
         .get(bandURL)
@@ -86,6 +86,10 @@ function concertThis() {
                 console.log("* " + concertHallLocation + ", " + concertHallLocationCountry);
                 var timeConfigured = moment(showTime).format("MM/DD/YYYY hh:00 A");
                 console.log("* " + timeConfigured + "\n");
+            }
+
+            if (response.data.length < 1) {
+                console.log("They're not on tour, dude! Go see Hozier!!!!");
             }
 
         console.log("\n*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+\n")
@@ -138,14 +142,16 @@ function movieThis() {
             .get(movieURL)
             .then(function(response) {
                 console.log(response);
+
+                var results = response.data;
+
                 for (var m = 0; m < response.data.length; m++) { 
-                    var results = response.data[m];
-                    var movieTitle = results.title;
-                    var releaseYear = results.released;
-                    var filmCountry = results.country;
-                    var filmLanguage = results.language;
-                    var filmPlot = results.plot;
-                    var filmCast = results.actors;
+                    var movieTitle = results[m].title;
+                    var releaseYear = results[m].released;
+                    var filmCountry = results[m].country;
+                    var filmLanguage = results[m].language;
+                    var filmPlot = results[m].plot;
+                    var filmCast = results[m].actors;
 
                     console.log("*Movie: " + movieTitle);
                     console.log("*Date of Release: " + releaseYear);
@@ -162,13 +168,16 @@ function movieThis() {
 }
 
 function doThis() {
+
+    //Node.js file system module reads random.txt
     fs.readFile("random.txt", "utf8", (err, data) => {
         if (err) {
             throw err;
         } 
         //console.log(data);
       
-      
+      //.split() splits the string contained in random.txt 
+      //at the "," so they can be stored in variables
       var dataArray = data.split(","); 
 
       userCommand = dataArray[0];
