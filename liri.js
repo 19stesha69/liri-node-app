@@ -21,10 +21,11 @@ var keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
 
 //Bands in Town
-var bandsInTown = (keys.bandsInTown);
+var bandsInTown = (keys.bandsInTown.id);
 
 //OMDB
-var omdb = (keys.omdb);
+var omdb = (keys.omdb.id);
+// console.log(keys);
 
 //Variables for storing user commands and user inputs
 var userCommand = process.argv[2];
@@ -138,30 +139,34 @@ function movieThis() {
         };
 
         var movieURL = "http://www.omdbapi.com/?t=" + userInput + "&apikey=" + omdb;
+        // console.log(movieURL);
         axios
             .get(movieURL)
             .then(function(response) {
-                console.log(response);
 
-                var results = response.data;
+                var ratingsArray = {};
 
-                for (var m = 0; m < response.data.length; m++) { 
-                    var movieTitle = results[m].title;
-                    var releaseYear = results[m].released;
-                    var filmCountry = results[m].country;
-                    var filmLanguage = results[m].language;
-                    var filmPlot = results[m].plot;
-                    var filmCast = results[m].actors;
+                var results= response.data;
+                var movieTitle = results.Title;
+                var releaseYear = results.Released;
+                var imdbRating = results.Ratings[0].Value;
+                var rottenToms = results.Ratings[1].Value;
+                var filmCountry = results.Country;
+                var filmLanguage = results.Language;
+                var filmPlot = results.Plot;
+                var filmCast = results.Actors;
 
-                    console.log("*Movie: " + movieTitle);
-                    console.log("*Date of Release: " + releaseYear);
-                    console.log("*Country: " + filmCountry);
-                    console.log("*Language: " + filmLanguage);
-                    console.log("*Plot: " + filmPlot);
-                    console.log("*Cast: " + filmCast);
-
-                }
+                console.log("*Movie: " + movieTitle);
+                console.log("*Date of Release: " + releaseYear);
+                console.log("*IMDB Rating: " + imdbRating);
+                console.log("*Rotten Tomatoes Rating: " + rottenToms);
+                console.log("*Country: " + filmCountry);
+                console.log("*Language: " + filmLanguage);
+                console.log("*Plot: " + filmPlot);
+                console.log("*Cast: " + filmCast);
                 console.log("\n*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+\n")
+            }).catch(error=> {
+                console.log(error);
             });    
                     
 
