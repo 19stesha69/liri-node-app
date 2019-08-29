@@ -45,7 +45,7 @@ Press Enter.
 # My role in the development of this app
 * I read the instructions, taking notes on the app's requirements.
 * I read the documentation included with the npm packages to be installed in the app, as well as the documentation on the websites of each of the APIs used (Bands in Town, Spotify, OMDB).
-* I perused the in-class activities that seemed most pertinent to the production of this app to get an idea for how the code whould be laid out.
+* I perused the in-class activities that seemed most pertinent to the production of this app to get an idea for how the code should be laid out.
 * Following the step-by-step instructions included in the homework insructions, I initialized a repository on GitHub and went about building the app, with much trial and error (and re-reading of documentation).
   
   
