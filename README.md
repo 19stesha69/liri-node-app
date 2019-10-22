@@ -1,4 +1,4 @@
-# liri-node-app
+# Liri Bot app
 LIRI BOT - Takes in data requests based on name of band, title of song, and name of movie, submitted via the node command line, and returns requested data from Band in Town, Spotify, and OMDB APIs, respectively.
 
 # Organization Overview
@@ -24,6 +24,8 @@ The code for this app is organized in four sections: requirements, API key initi
   * userRequest() - This is the function that takes the user's commands, as typed in to the command line, and directs them to the proper function in order for that request to be processed succesfully. It does this via a *switch* statement.
   
 # How to Run the App
+**This app runs completely in the node.js terminal. The following includes instructions for installing the app in Node**
+1. Open a terminal in the root directory (Liri-Bot)
 In the command line, the user types in the following:
 **node liri.js** 
 This alerts the console that the commands will be run using node.js and the file being run will be *liri.js*
