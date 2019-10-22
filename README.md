@@ -25,11 +25,13 @@ The code for this app is organized in four sections: requirements, API key initi
   
 # How to Run the App
 **This app runs completely in the node.js terminal. The following includes instructions for installing the app in Node**
-1. Open a terminal in the root directory (Liri-Bot)
-In the command line, the user types in the following:
+1. Fork a copy of the Liri-Bot repository on to computer.
+2. Open a terminal in the root directory (Liri-Bot). 
+3. run **npm install** to install required packages. 
+4. In the command line, type in the following:
 **node liri.js** 
 This alerts the console that the commands will be run using node.js and the file being run will be *liri.js*
-Next, the user types in one of the following commands:
+Next, on the same line as *node liri.js*, the user types in one of the following commands:
 * concert-this <artist's name> 
   * This command runs the **concertThis** function and produces concert information for the artist in question.
 * spotify-this-song <song title>
