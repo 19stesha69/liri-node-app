@@ -68,7 +68,7 @@ function concertThis() {
     console.log("\n*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+\n");
     console.log("LET'S ROCK AND ROLL!!!\n");
 
-    var bandURL = "https://rest.bandsintown.com/artists/" + userInput + "/events?app_id=" + bandsInTown + "&date=2019-06-18%2C2019-08-18";
+    var bandURL = "https://rest.bandsintown.com/artists/" + userInput + "/events?app_id=" + bandsInTown + "&date=2019-06-18%2C2020-08-18";
 
     axios
         .get(bandURL)
