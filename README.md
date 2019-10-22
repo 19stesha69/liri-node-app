@@ -27,7 +27,7 @@ The code for this app is organized in four sections: requirements, API key initi
 **This app runs completely in the node.js terminal. The following includes instructions for installing the app in Node**
 1. Fork a copy of the Liri-Bot repository on to computer.
 2. Open a terminal in the root directory (Liri-Bot). 
-3. run **npm install** to install required packages. 
+3. Type **npm install** in the terminal and press *Enter*. This installs the required packages. 
 4. In the command line, type in the following:
 **node liri.js** 
 This alerts the console that the commands will be run using node.js and the file being run will be *liri.js*
